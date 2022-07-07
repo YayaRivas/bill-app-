@@ -1,4 +1,3 @@
-
 const jsonOrThrowIfError = async (response) => {
   if(!response.ok) throw new Error((await response.json()).message)
   return response.json()
@@ -45,7 +44,7 @@ class ApiEntity {
     return await (this.api.patch({url: `/${this.key}/${selector}`, headers: getHeaders(headers), data}))
   }
   async create({data, headers = {}}) {
-    return await (this.api.post({url: `/${this.key}`, headers: getHeaders(headers), data}))
+    return await (this.api.post({url: `/${this.key}`, data, headers: getHeaders(headers)}))
   }
   async delete({selector, headers = {}}) {
     return await (this.api.delete({url: `/${this.key}/${selector}`, headers: getHeaders(headers)}))
